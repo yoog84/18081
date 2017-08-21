@@ -14,5 +14,6 @@ class Barber <ActiveRecord::Base#class nasleduetsya ot activerecord base(vse s b
 	end
 
 get '/' do
+	@barbers = Barber.all
 	erb :index
 end
