@@ -14,6 +14,9 @@ class Barber <ActiveRecord::Base#class nasleduetsya ot activerecord base(vse s b
 	end
 
 get '/' do
-	@barbers = Barber.all
+	#vivod na ekran vsex parikmaherov
+	#@barbers = Barber.all
+	#vivod na ekran vsex parikmaherov s sortirovkoy
+	@barbers = Barber.order "created_at DESC"
 	erb :index
 end
