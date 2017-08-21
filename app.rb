@@ -21,6 +21,8 @@ get '/' do
 	erb :index
 end
 
+
+#ispravit na 30
 get '/visit' do
 	@c = Client.new
 	erb :visit
