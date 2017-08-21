@@ -15,8 +15,24 @@ class Barber <ActiveRecord::Base#class nasleduetsya ot activerecord base(vse s b
 
 get '/' do
 	#vivod na ekran vsex parikmaherov
-	#@barbers = Barber.all
+	@barbers = Barber.all
 	#vivod na ekran vsex parikmaherov s sortirovkoy
-	@barbers = Barber.order "created_at DESC"
+	#@barbers = Barber.order "created_at DESC"
 	erb :index
+end
+
+get '/visit' do
+	@c = Client.new
+	erb :visit
+end
+
+post '/visit' do
+
+	@c = Client.new params[:client]
+	if @c.save
+		erb "<h2>Спасибо, вы записались!</h2>"
+	else
+		@error = @c.errors.full_messages.first
+		erb :visit
+	end
 end
